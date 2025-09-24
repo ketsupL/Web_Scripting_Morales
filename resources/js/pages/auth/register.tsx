@@ -1,3 +1,4 @@
+import React from 'react';
 import RegisteredUserController from '@/actions/App/Http/Controllers/Auth/RegisteredUserController';
 import { login } from '@/routes';
 import { Form, Head } from '@inertiajs/react';
@@ -10,6 +11,15 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
 import { Combobox } from '@/components/ui/combobox';
+import { CheckboxGroup } from '@/components/ui/checkbox-group';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 const countries = [
     { value: "usa", label: "United States" },
@@ -28,7 +38,15 @@ const gender = [
     {value: "other", label: "Other"},
 ]
 
+const hobbies = [
+    { value: "music", label: "Music" },
+    { value: "sports", label: "Sports" },
+    { value: "reading", label: "Reading" },
+]
+
 export default function Register() {
+    const [selectedHobbies, setSelectedHobbies] = React.useState<string[]>([])
+
     return (
         <AuthLayout
             title="Create an account"
@@ -132,6 +150,23 @@ export default function Register() {
                                             onChange={(val) => console.log("Selected:", val)}
                                         />
                                     </div>
+                                </div>
+                            </div>
+
+                            <div className="grid gap-2">
+                                <div className="flex flex-col gap-1">
+                                    <Label htmlFor="hobbies">
+                                    Hobbies
+                                    </Label>
+                                    <CheckboxGroup
+                                        name="hobbies"
+                                        options={hobbies}
+                                        selected={selectedHobbies}
+                                        onChange={setSelectedHobbies}
+                                    />
+                                    {selectedHobbies.map((hobby) => (
+                                        <input key={hobby} type="hidden" name="interests[]" value={hobby}/>
+                                    ))}
                                 </div>
                             </div>
 
