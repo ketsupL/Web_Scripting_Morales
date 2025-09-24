@@ -9,6 +9,24 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
+import { Combobox } from '@/components/ui/combobox';
+
+const countries = [
+    { value: "usa", label: "United States" },
+    { value: "canada", label: "Canada" },
+    { value: "uk", label: "United Kingdom" },
+    { value: "australia", label: "Australia" },
+    { value: "germany", label: "Germany" },
+    { value: "france", label: "France" },
+    { value: "japan", label: "Japan" },
+    { value: "philippines", label: "Philippines" },
+]
+
+const gender = [
+    {value: "male", label: "Male"},
+    {value: "female", label: "Female"},
+    {value: "other", label: "Other"},
+]
 
 export default function Register() {
     return (
@@ -88,6 +106,33 @@ export default function Register() {
                                 <InputError
                                     message={errors.password_confirmation}
                                 />
+                            </div>
+
+                            <div className="grid gap-2">
+                                <div className="grid grid-cols-2 gap-4">
+                                    <div>
+                                        <Label htmlFor="gender">
+                                            Gender
+                                        </Label>
+                                        <Combobox
+                                            items={gender}
+                                            name="gender"
+                                            placeholder="Select gender..."
+                                            onChange={(val) => console.log("Selected:", val)}
+                                        />
+                                    </div>
+                                    <div>
+                                        <Label htmlFor="country">
+                                            Country
+                                        </Label>
+                                        <Combobox
+                                            items={countries}
+                                            name="country"
+                                            placeholder="Select country..."
+                                            onChange={(val) => console.log("Selected:", val)}
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             <Button
