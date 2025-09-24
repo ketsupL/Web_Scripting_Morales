@@ -44,7 +44,7 @@ export default function Welcome() {
                 </header>
                 <div className="flex w-full items-center justify-center opacity-100 transition-opacity duration-750 lg:grow starting:opacity-0">
                     <main>
-                        <p className="text-9xl text-white">
+                        <p className="text-9xl text text-white">
                             Welcome
                         </p>
                     </main>
