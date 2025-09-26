@@ -12,6 +12,6 @@ Copy environment file: cp .env.example .env
 
 Generate app key: php artisan key:generate
 
-Run migrations: php artisan migrate --seed
+Run migrations: php artisan migrate
 
 Start servers: composer run dev
