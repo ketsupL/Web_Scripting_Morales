@@ -11,15 +11,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import AuthLayout from '@/layouts/auth-layout';
 import { Combobox } from '@/components/ui/combobox';
-import { CheckboxGroup } from '@/components/ui/checkbox-group';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+import { MultiSelectCombobox } from '@/components/ui/multicombobox';
+
 
 const countries = [
     { value: "usa", label: "United States" },
@@ -154,21 +147,16 @@ export default function Register() {
                             </div>
 
                             <div className="grid gap-2">
-                                <div className="flex flex-col gap-1">
-                                    <Label htmlFor="hobbies">
-                                    Hobbies
-                                    </Label>
-                                    <CheckboxGroup
-                                        name="hobbies"
-                                        options={hobbies}
-                                        selected={selectedHobbies}
-                                        onChange={setSelectedHobbies}
-                                    />
-                                    {selectedHobbies.map((hobby) => (
-                                        <input key={hobby} type="hidden" name="interests[]" value={hobby}/>
-                                    ))}
-                                </div>
+                            <Label htmlFor="hobbies">Hobbies</Label>
+                            <MultiSelectCombobox
+                                items={hobbies}
+                                name="hobbies[]"
+                                selected={selectedHobbies}
+                                onChange={setSelectedHobbies}
+                                placeholder="Select hobbies..."
+                            />
                             </div>
+
 
                             <Button
                                 type="submit"

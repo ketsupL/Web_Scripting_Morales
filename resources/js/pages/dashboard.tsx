@@ -16,12 +16,13 @@ type DashboardProps = {
         name: string;
         email: string;
         gender: string;
-        hobbies: string[];
+        hobbies?: string[];
         country: string;
     };
 }
 
 export default function Dashboard({ user }: DashboardProps) {
+    const hobbies = user.hobbies ?? []
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Dashboard" />
@@ -33,9 +34,9 @@ export default function Dashboard({ user }: DashboardProps) {
 
                 <div>
                 <p>Your hobbies:</p>
-                {user.hobbies.length > 0 ? (
+                {hobbies.length > 0 ? (
                     <ul className="ml-5 list-disc text-blue-300">
-                    {user.hobbies.map((hobby, i) => (
+                    {hobbies.map((hobby, i) => (
                         <li key={i}>{hobby}</li>
                     ))}
                     </ul>
